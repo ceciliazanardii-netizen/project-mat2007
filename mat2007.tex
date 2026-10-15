@@ -1,0 +1,119 @@
+
+
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{float}
+
+\begin{document}
+
+% TITLE PAGE
+\begin{titlepage}
+\begin{center}
+
+\includegraphics[width=3cm]{MSP-logo.jpg}
+
+\vspace{1cm}
+
+\textbf{\LARGE The Cost of a Healthy Diet}\\[0.3cm]
+\textbf{\Large Global Changes and Differences Between Countries (2017--2024)}
+
+\vspace{1.5cm}
+
+\textbf{\Large Cecilia Zanardi (i6399486)}
+
+\vfill
+
+\large Date: \today
+
+\end{center}
+\end{titlepage}
+
+% INTRODUCTION
+\section*{Introduction}
+
+The cost of a healthy diet is not the same everywhere and can vary over time. 
+
+This project aims to answer two research questions:
+\begin{enumerate}
+    \item How did the average cost of a healthy diet change globally between 2017 and 2024?
+    \item How did the increase differ between countries?
+\end{enumerate}
+
+% DATA SAMPLE
+\section*{Data sample}
+
+The dataset was obtained from Our World in Data, based on FAO and World Bank data \cite{owid,worldbank,fao}. It contains the daily cost of a healthy diet in international dollars (2021 prices) for different countries between 2017 and 2024.
+
+The Healthy Diet Basket uses 11 food items from six food groups to estimate the cheapest combination of locally available foods that meets the requirements of a healthy diet.
+
+The original dataset contained 1,490 observations from 190 geographic entities.
+
+Before the analysis, the data were validated using checks in Python to identify missing columns, invalid cost values and duplicate observations. Rows without country codes and non-country aggregates were removed. Only countries with complete data for all eight years were retained.
+
+The final dataset contained 179 countries and 1,432 observations.
+
+For each year, the mean, median, standard deviation and standard error were calculated. The absolute and percentage changes between 2017 and 2024 were then calculated for each country. The results were visualized using Matplotlib.
+
+% RESULTS AND DISCUSSION
+\section*{Results and discussion}
+
+The first analysis examined how the average cost of a healthy diet changed between 2017 and 2024. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.55\linewidth]{cost of a healthy diets across country.png}
+\caption{Mean and median cost of a healthy diet between 2017 and 2024. Error bars indicate the standard error.}
+\label{fig:trend}
+\end{figure}
+
+The mean cost increased from 3.13 international dollars per person per day in 2017 to 4.46 in 2024, an increase of approximately 1.33. The median followed a similar upward trend, suggesting that the increase was not limited to a few countries. The standard deviation increased from approximately 0.64 in 2017 to 0.95 in 2024.
+
+The second analysis compared changes between countries. The absolute change was calculated by subtracting the 2017 cost from the 2024 cost for each country. Figure~\ref{fig:distribution} shows the distribution of these changes.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.53\linewidth]{distribution of country level change.png}
+\caption{Distribution of country-level changes between 2017 and 2024. The lines indicate the mean and median increases.}
+\label{fig:distribution}
+\end{figure}
+
+Of the 179 countries analyzed, 177 (98.9\%) experienced an increase.  The distribution was positively skewed (skewness = 1.93), indicating that most countries experienced moderate increases, while a few experienced larger changes.
+
+The ten countries with the largest increases are shown in Figure~\ref{fig:largest}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.53\linewidth]{largest_increases.png}
+\caption{The ten countries with the largest absolute increases in the daily cost of a healthy diet between 2017 and 2024.}
+\label{fig:largest}
+\end{figure}
+
+South Sudan experienced the largest increase (5.26 international dollars per person per day), followed by Lebanon (4.54) and Syria (3.27). These increases explain the right-skewed distribution observed in Figure~\ref{fig:distribution}.
+
+Overall, the results show that the cost of a healthy diet increased in almost every country, although the magnitude of the increase varied.
+
+
+% REFERENCES
+\begin{thebibliography}{9}
+
+\bibitem{owid}
+Our World in Data.
+\textit{Daily cost of a healthy diet}.
+\url{https://ourworldindata.org/grapher/cost-healthy-diet}
+
+\bibitem{worldbank}
+World Bank (2025).
+\textit{Food Prices for Nutrition Database, Version 4.0}.
+
+\bibitem{fao}
+FAO (2025).
+\textit{Cost and Affordability of a Healthy Diet Database}.
+
+\end{thebibliography}
+
+\end{document}
