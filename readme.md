@@ -64,5 +64,5 @@ No manual cleaning is needed.
 
 ## Report
 
-The full analysis, discussion and conclusion are included in LaTeX source file `report.tex`.
+The full analysis, discussion and conclusion are included in MAT2007_Final_Report.pdf.
 
